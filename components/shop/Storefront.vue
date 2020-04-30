@@ -35,12 +35,21 @@ export default {
       default: 'banner-ppl'
     }
   },
-  computed: {
-    products() {
-      if (this.$store.state.products) {
-        return this.$store.state.products
-      } else {
-        return []
+  data() {
+    return {
+      products: []
+    }
+  },
+  created() {
+    this.fetchProducts()
+  },
+  methods: {
+    async fetchProducts() {
+      try {
+        const resp = await this.$axios.$get(process.env.shopUrl)
+        console.log('fetchProducts', resp)
+      } catch (error) {
+        console.log('fetchProducts error', error)
       }
     }
   }

@@ -18,6 +18,9 @@ export default {
   components: {
     Storefront
   },
+  data() {
+    return {}
+  },
   computed: {
     shopName() {
       return process.env.shopName
@@ -25,9 +28,6 @@ export default {
     shopDescription() {
       return process.env.shopDescription
     }
-  },
-  data() {
-    return {}
   },
   created() {
     console.log('shops page created')
