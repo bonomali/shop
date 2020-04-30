@@ -1,3 +1,13 @@
+require('dotenv').config()
+const config = require('./config.json')
+
+const SHOP_NAME = process.env.SHOP_NAME
+  ? process.env.SHOP_NAME
+  : config.shop.name
+const SHOP_DESCRIPTION = process.env.SHOP_DESCRIPTION
+  ? process.env.SHOP_DESCRIPTION
+  : config.shop.description
+
 module.exports = {
   mode: 'universal',
   /*
@@ -55,6 +65,11 @@ module.exports = {
   /*
    ** Build configuration
    */
+  env: {
+    shopUrl: process.env.SHOP_URL || false,
+    shopName: SHOP_NAME,
+    shopDescription: SHOP_DESCRIPTION
+  },
   build: {
     transpile: [/^element-ui/],
     /*

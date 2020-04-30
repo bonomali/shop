@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">shopname</h1>
+      <h1 class="title">{{ shopName }}</h1>
       <h2 class="subtitle">
-        Shop Application by Open Marketplace Applications
+        {{ shopDescription }}
       </h2>
       <div class="contain">
         <storefront />
@@ -17,6 +17,14 @@ import Storefront from '@/components/shop/Storefront.vue'
 export default {
   components: {
     Storefront
+  },
+  computed: {
+    shopName() {
+      return process.env.shopName
+    },
+    shopDescription() {
+      return process.env.shopDescription
+    }
   },
   data() {
     return {}
