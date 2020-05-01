@@ -2,6 +2,7 @@
   <div class="storefront">
     <div class="masthead" :style="`background:${bkcolor}`">
       <h1>{{ title }}</h1>
+      <pre>{{ $store.state.localStorage.paymentIds }}</pre>
     </div>
     <transition-group name="items" tag="section" class="products">
       <item
@@ -42,6 +43,7 @@ export default {
   },
   created() {
     this.fetchProducts()
+    console.log('store', this.$store.state.localStorage.paymentIds)
   },
   methods: {
     async fetchProducts() {
