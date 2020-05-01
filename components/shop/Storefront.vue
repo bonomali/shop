@@ -46,8 +46,11 @@ export default {
   methods: {
     async fetchProducts() {
       try {
-        const resp = await this.$axios.$get(process.env.shopUrl)
+        const resp = await this.$axios.$get(process.env.shopUrl + '/products')
         console.log('fetchProducts', resp)
+        if (resp.products) {
+          this.products = resp.products
+        }
       } catch (error) {
         console.log('fetchProducts error', error)
       }
