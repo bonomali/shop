@@ -32,7 +32,8 @@
     "element-ui": "^2.4.11",
     "express": "^4.16.4",
     "nuxt": "^2.0.0",
-    "nuxt-vuex-localstorage": "^1.2.6"
+    "nuxt-vuex-localstorage": "^1.2.6",
+    "vue-iota-payment": "0.0.31"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.0",

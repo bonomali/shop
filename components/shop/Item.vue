@@ -8,7 +8,9 @@
       :alt="`Image of ${item.name}`"
     />
     <p>{{ item.price | usdollar }}</p>
-    <el-button type="primary" class="buy" @click="buyItem">Buy Item</el-button>
+    <no-ssr>
+      <iota-payment>Buy Item</iota-payment>
+    </no-ssr>
   </div>
 </template>
 
@@ -37,7 +39,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .item {
   border-radius: 5px;
   padding: 20px;
