@@ -59,7 +59,7 @@ module.exports = {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    'nuxt-vuex-localstorage'
+    ['nuxt-vuex-localstorage', { localStorage: ['payments'] }]
   ],
   /*
    ** Axios module configuration

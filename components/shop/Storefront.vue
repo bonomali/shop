@@ -2,8 +2,8 @@
   <div class="storefront">
     <div class="masthead" :style="`background:${bkcolor}`">
       <h1>{{ title }}</h1>
-      <pre>{{ $store.state.localStorage.paymentIds }}</pre>
     </div>
+    <pre v-show="loaded">{{ $store.state.payments }}</pre>
     <transition-group name="items" tag="section" class="products">
       <item
         v-for="(item, index) in products"
@@ -41,9 +41,23 @@ export default {
       products: []
     }
   },
+  computed: {
+    loaded() {
+      return this.$store.state.payments.status
+    }
+  },
   created() {
     this.fetchProducts()
-    console.log('store', this.$store.state.localStorage.paymentIds)
+    console.log('store', this.$store.state.payments)
+    if (this.$store.state.payments.allowed_ids) {
+      console.log('allowd', this.$store.state.payments.allowed_ids)
+    } else {
+      console.log('not allowd')
+    }
+  },
+  mounted() {
+    this.fetchProducts()
+    console.log('mounted store', this.$store.state.payments)
   },
   methods: {
     async fetchProducts() {
@@ -56,6 +70,25 @@ export default {
       } catch (error) {
         console.log('fetchProducts error', error)
       }
+    }
+  },
+  sockets: {
+    connect() {
+      console.log('socket connected')
+    },
+    payments(payment) {
+      console.log('payments', payment)
+      if (payment.status === 'paymentArrived') {
+        this.state = 'transaction_incoming'
+      } else if (payment.status === 'paymentSuccess') {
+        console.log('emit payment', payment.payment.id)
+        console.log('emit this.$store', this.$store.state.payments)
+        this.$store.commit('payments/add', payment.payment.id)
+        console.log('emit this.$store', this.$store.state.payments)
+      }
+    },
+    disconnect() {
+      console.log('socket disconnect')
     }
   }
 }
@@ -95,6 +128,7 @@ h1 {
   justify-content: center;
   color: black;
   width: 100%;
+  max-width: 800px;
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
