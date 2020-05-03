@@ -32,9 +32,8 @@
 
 **Demo:** [http://shop-demo.nest.openmarketplace.org](https://shop-demo.nest.openmarketplace.org)
 
-# shop
-
 > Shop Application build with [Vue.js](https://vuejs.org/) and [Nuxt.js](https://nuxtjs.org/)
+
 
 
  🛠️ 🛠️ 🛠️ UNDER DEVELOPMENT 🛠️ 🛠️ 🛠️
