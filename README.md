@@ -28,7 +28,7 @@
 
 # Shop
 
-**Demo:** [http://shop-demo.nest.openmarketplace.org](https://shop-demo.nest.openmarketplace.org)
+**Demo:** [https://shop-demo.nest.openmarketplace.org](https://shop-demo.nest.openmarketplace.org)
 
 > Shop Application build with [Vue.js](https://vuejs.org/) and [Nuxt.js](https://nuxtjs.org/)
 
