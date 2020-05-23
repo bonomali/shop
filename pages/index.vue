@@ -29,9 +29,28 @@ export default {
       return process.env.shopDescription
     }
   },
-  created() {
+  beforeMount() {
     console.log('shops page created')
     console.log(this.$store.state.products)
+    this.connect_pegasus()
+  },
+  methods: {
+    connect_pegasus() {
+      console.log('connect_pegasus')
+      if (process.client) {
+        setTimeout(async function() {
+          if (window.iota) {
+            console.log('window.iota', window.iota)
+            try {
+              const isConnected = await window.iota.connect()
+              console.log('isConnected', isConnected)
+            } catch (err) {
+              console.log('err', err)
+            }
+          }
+        }, 3000)
+      }
+    }
   }
 }
 </script>
